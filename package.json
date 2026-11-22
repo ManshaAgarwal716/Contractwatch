@@ -1,0 +1,55 @@
+{
+  "name": "contractwatch",
+  "version": "0.1.0",
+  "description": "Catch integration failures before they reach runtime.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "contractwatch": "dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/copy-assets.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run tests",
+    "lint": "prettier --check src tests",
+    "format": "prettier --write src tests",
+    "prepack": "npm run build",
+    "pretest": "npm run build"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "typescript": "^5.9.3",
+    "picomatch": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "vitest": "^5.1.0",
+    "prettier": "^3.8.4"
+  },
+  "keywords": [
+    "api",
+    "contracts",
+    "static-analysis",
+    "typescript",
+    "fastapi",
+    "express"
+  ]
+}
