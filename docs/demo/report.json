@@ -1,0 +1,809 @@
+{
+  "version": "1",
+  "cwd": "examples/demo-project",
+  "discovery": {
+    "files": [
+      "backend/app.py",
+      "frontend/src/api/users.ts"
+    ],
+    "packageFiles": [],
+    "tsconfigFiles": [],
+    "frontend": [
+      "frontend/src/api/users.ts"
+    ],
+    "backend": [
+      "backend/app.py"
+    ],
+    "frameworks": [
+      "FastAPI"
+    ],
+    "monorepo": false,
+    "errors": []
+  },
+  "diagnostics": [],
+  "frontend": [
+    {
+      "id": "frontend:frontend/src/api/users.ts:5:14",
+      "source": "frontend",
+      "method": "GET",
+      "path": "/api/users/me",
+      "external": false,
+      "urlStatus": "static",
+      "requestKnowledge": "unknown",
+      "resolved": true,
+      "response": {
+        "fields": {
+          "id": {
+            "type": "string",
+            "optional": false,
+            "nullable": false
+          },
+          "name": {
+            "type": "string",
+            "optional": false,
+            "nullable": false
+          },
+          "avatar": {
+            "type": "string",
+            "optional": false,
+            "nullable": false
+          },
+          "email": {
+            "type": "string",
+            "optional": false,
+            "nullable": false
+          }
+        }
+      },
+      "sourceLocation": {
+        "file": "frontend/src/api/users.ts",
+        "line": 5,
+        "column": 14
+      },
+      "framework": "fetch",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 5,
+            "column": 14
+          }
+        }
+      ],
+      "context": "fetch('/api/users/me') as Promise<User>",
+      "definition": false
+    },
+    {
+      "id": "frontend:frontend/src/api/users.ts:7:1",
+      "source": "frontend",
+      "method": "GET",
+      "path": "/api/users/missing",
+      "external": false,
+      "urlStatus": "static",
+      "requestKnowledge": "unknown",
+      "resolved": true,
+      "sourceLocation": {
+        "file": "frontend/src/api/users.ts",
+        "line": 7,
+        "column": 1
+      },
+      "framework": "fetch",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 7,
+            "column": 1
+          }
+        }
+      ],
+      "context": "fetch('/api/users/missing');",
+      "definition": false
+    },
+    {
+      "id": "frontend:frontend/src/api/users.ts:9:1",
+      "source": "frontend",
+      "method": "POST",
+      "path": "/api/users/list",
+      "external": false,
+      "urlStatus": "static",
+      "requestKnowledge": "unknown",
+      "resolved": true,
+      "sourceLocation": {
+        "file": "frontend/src/api/users.ts",
+        "line": 9,
+        "column": 1
+      },
+      "framework": "fetch",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 9,
+            "column": 1
+          }
+        }
+      ],
+      "context": "fetch('/api/users/list', { method: 'POST' });",
+      "definition": false
+    },
+    {
+      "id": "frontend:frontend/src/api/users.ts:11:1",
+      "source": "frontend",
+      "method": "POST",
+      "path": "/api/users",
+      "external": false,
+      "urlStatus": "static",
+      "requestKnowledge": "fully_known",
+      "resolved": true,
+      "request": {
+        "fields": {
+          "name": {
+            "type": "string",
+            "optional": false,
+            "nullable": false
+          }
+        }
+      },
+      "sourceLocation": {
+        "file": "frontend/src/api/users.ts",
+        "line": 11,
+        "column": 1
+      },
+      "framework": "fetch",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 11,
+            "column": 1
+          }
+        }
+      ],
+      "context": "fetch('/api/users', { method: 'POST', body: JSON.stringify(payload) });",
+      "definition": false
+    }
+  ],
+  "backend": [
+    {
+      "id": "backend:backend/app.py:15:2:GET:/api/users/me",
+      "source": "backend",
+      "framework": "FastAPI",
+      "method": "GET",
+      "path": "/api/users/me",
+      "resolved": true,
+      "response": {
+        "fields": {
+          "id": {
+            "type": "number",
+            "optional": false,
+            "nullable": false
+          },
+          "name": {
+            "type": "string",
+            "optional": false,
+            "nullable": false
+          },
+          "avatar": {
+            "type": "string",
+            "optional": true,
+            "nullable": true
+          }
+        }
+      },
+      "sourceLocation": {
+        "file": "backend/app.py",
+        "line": 15,
+        "column": 2
+      },
+      "confidence": 0.96,
+      "evidence": [
+        {
+          "description": "FastAPI route decorator parsed from Python AST",
+          "location": {
+            "file": "backend/app.py",
+            "line": 15,
+            "column": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "backend:backend/app.py:19:2:GET:/api/users/list",
+      "source": "backend",
+      "framework": "FastAPI",
+      "method": "GET",
+      "path": "/api/users/list",
+      "resolved": true,
+      "sourceLocation": {
+        "file": "backend/app.py",
+        "line": 19,
+        "column": 2
+      },
+      "confidence": 0.96,
+      "evidence": [
+        {
+          "description": "FastAPI route decorator parsed from Python AST",
+          "location": {
+            "file": "backend/app.py",
+            "line": 19,
+            "column": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "backend:backend/app.py:23:2:POST:/api/users",
+      "source": "backend",
+      "framework": "FastAPI",
+      "method": "POST",
+      "path": "/api/users",
+      "resolved": true,
+      "request": {
+        "fields": {
+          "name": {
+            "type": "string",
+            "optional": false,
+            "nullable": false
+          },
+          "email": {
+            "type": "string",
+            "optional": false,
+            "nullable": false
+          }
+        }
+      },
+      "response": {
+        "fields": {
+          "id": {
+            "type": "number",
+            "optional": false,
+            "nullable": false
+          },
+          "name": {
+            "type": "string",
+            "optional": false,
+            "nullable": false
+          },
+          "avatar": {
+            "type": "string",
+            "optional": true,
+            "nullable": true
+          }
+        }
+      },
+      "sourceLocation": {
+        "file": "backend/app.py",
+        "line": 23,
+        "column": 2
+      },
+      "confidence": 0.96,
+      "evidence": [
+        {
+          "description": "FastAPI route decorator parsed from Python AST",
+          "location": {
+            "file": "backend/app.py",
+            "line": 23,
+            "column": 2
+          }
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "frontend": {
+        "id": "frontend:frontend/src/api/users.ts:5:14",
+        "source": "frontend",
+        "method": "GET",
+        "path": "/api/users/me",
+        "external": false,
+        "urlStatus": "static",
+        "requestKnowledge": "unknown",
+        "resolved": true,
+        "response": {
+          "fields": {
+            "id": {
+              "type": "string",
+              "optional": false,
+              "nullable": false
+            },
+            "name": {
+              "type": "string",
+              "optional": false,
+              "nullable": false
+            },
+            "avatar": {
+              "type": "string",
+              "optional": false,
+              "nullable": false
+            },
+            "email": {
+              "type": "string",
+              "optional": false,
+              "nullable": false
+            }
+          }
+        },
+        "sourceLocation": {
+          "file": "frontend/src/api/users.ts",
+          "line": 5,
+          "column": 14
+        },
+        "framework": "fetch",
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "description": "Static API URL",
+            "location": {
+              "file": "frontend/src/api/users.ts",
+              "line": 5,
+              "column": 14
+            }
+          }
+        ],
+        "context": "fetch('/api/users/me') as Promise<User>",
+        "definition": false
+      },
+      "backend": {
+        "id": "backend:backend/app.py:15:2:GET:/api/users/me",
+        "source": "backend",
+        "framework": "FastAPI",
+        "method": "GET",
+        "path": "/api/users/me",
+        "resolved": true,
+        "response": {
+          "fields": {
+            "id": {
+              "type": "number",
+              "optional": false,
+              "nullable": false
+            },
+            "name": {
+              "type": "string",
+              "optional": false,
+              "nullable": false
+            },
+            "avatar": {
+              "type": "string",
+              "optional": true,
+              "nullable": true
+            }
+          }
+        },
+        "sourceLocation": {
+          "file": "backend/app.py",
+          "line": 15,
+          "column": 2
+        },
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "description": "FastAPI route decorator parsed from Python AST",
+            "location": {
+              "file": "backend/app.py",
+              "line": 15,
+              "column": 2
+            }
+          }
+        ]
+      },
+      "confidence": 0.99,
+      "reasoning": "HTTP method and route segments match"
+    },
+    {
+      "frontend": {
+        "id": "frontend:frontend/src/api/users.ts:11:1",
+        "source": "frontend",
+        "method": "POST",
+        "path": "/api/users",
+        "external": false,
+        "urlStatus": "static",
+        "requestKnowledge": "fully_known",
+        "resolved": true,
+        "request": {
+          "fields": {
+            "name": {
+              "type": "string",
+              "optional": false,
+              "nullable": false
+            }
+          }
+        },
+        "sourceLocation": {
+          "file": "frontend/src/api/users.ts",
+          "line": 11,
+          "column": 1
+        },
+        "framework": "fetch",
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "description": "Static API URL",
+            "location": {
+              "file": "frontend/src/api/users.ts",
+              "line": 11,
+              "column": 1
+            }
+          }
+        ],
+        "context": "fetch('/api/users', { method: 'POST', body: JSON.stringify(payload) });",
+        "definition": false
+      },
+      "backend": {
+        "id": "backend:backend/app.py:23:2:POST:/api/users",
+        "source": "backend",
+        "framework": "FastAPI",
+        "method": "POST",
+        "path": "/api/users",
+        "resolved": true,
+        "request": {
+          "fields": {
+            "name": {
+              "type": "string",
+              "optional": false,
+              "nullable": false
+            },
+            "email": {
+              "type": "string",
+              "optional": false,
+              "nullable": false
+            }
+          }
+        },
+        "response": {
+          "fields": {
+            "id": {
+              "type": "number",
+              "optional": false,
+              "nullable": false
+            },
+            "name": {
+              "type": "string",
+              "optional": false,
+              "nullable": false
+            },
+            "avatar": {
+              "type": "string",
+              "optional": true,
+              "nullable": true
+            }
+          }
+        },
+        "sourceLocation": {
+          "file": "backend/app.py",
+          "line": 23,
+          "column": 2
+        },
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "description": "FastAPI route decorator parsed from Python AST",
+            "location": {
+              "file": "backend/app.py",
+              "line": 23,
+              "column": 2
+            }
+          }
+        ]
+      },
+      "confidence": 0.99,
+      "reasoning": "HTTP method and route segments match"
+    }
+  ],
+  "findings": [
+    {
+      "id": "CW101-c9372b0ce9",
+      "code": "CW101",
+      "severity": "error",
+      "confidence": 0.85,
+      "category": "FRONTEND_ENDPOINT_NOT_FOUND",
+      "endpoint": "GET /api/users/missing",
+      "frontend": {
+        "file": "frontend/src/api/users.ts",
+        "line": 7,
+        "column": 1
+      },
+      "expected": "Matching backend endpoint",
+      "actual": "No matching route discovered",
+      "explanation": "The frontend path and method have no discovered backend route.",
+      "remediation": "Check route spelling, mounting, or analyzer coverage.",
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 7,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "CW102-c5c9b3ee24",
+      "code": "CW102",
+      "severity": "warning",
+      "confidence": 0.9,
+      "category": "HTTP_METHOD_MISMATCH",
+      "endpoint": "POST /api/users/list",
+      "frontend": {
+        "file": "frontend/src/api/users.ts",
+        "line": 9,
+        "column": 1
+      },
+      "backend": {
+        "file": "backend/app.py",
+        "line": 19,
+        "column": 2
+      },
+      "expected": "POST",
+      "actual": "GET",
+      "explanation": "Route exists with a different HTTP method.",
+      "remediation": "Align the client method with the backend route.",
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 9,
+            "column": 1
+          }
+        },
+        {
+          "description": "FastAPI route decorator parsed from Python AST",
+          "location": {
+            "file": "backend/app.py",
+            "line": 19,
+            "column": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "CW201-0326c69f7d",
+      "code": "CW201",
+      "severity": "warning",
+      "confidence": 0.9,
+      "category": "RESPONSE_FIELD_MISSING",
+      "endpoint": "GET /api/users/me",
+      "frontend": {
+        "file": "frontend/src/api/users.ts",
+        "line": 5,
+        "column": 14
+      },
+      "backend": {
+        "file": "backend/app.py",
+        "line": 15,
+        "column": 2
+      },
+      "expected": "email: string",
+      "actual": "Field absent",
+      "explanation": "Frontend requires email, but the response model omits it.",
+      "remediation": "Add the field or update the frontend type.",
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 5,
+            "column": 14
+          }
+        },
+        {
+          "description": "FastAPI route decorator parsed from Python AST",
+          "location": {
+            "file": "backend/app.py",
+            "line": 15,
+            "column": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "CW202-81423fbeef",
+      "code": "CW202",
+      "severity": "error",
+      "confidence": 0.95,
+      "category": "RESPONSE_TYPE_MISMATCH",
+      "endpoint": "GET /api/users/me",
+      "frontend": {
+        "file": "frontend/src/api/users.ts",
+        "line": 5,
+        "column": 14
+      },
+      "backend": {
+        "file": "backend/app.py",
+        "line": 15,
+        "column": 2
+      },
+      "expected": "id: string",
+      "actual": "id: number",
+      "explanation": "Response field types differ.",
+      "remediation": "Align the frontend type and backend response.",
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 5,
+            "column": 14
+          }
+        },
+        {
+          "description": "FastAPI route decorator parsed from Python AST",
+          "location": {
+            "file": "backend/app.py",
+            "line": 15,
+            "column": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "CW301-7333420f99",
+      "code": "CW301",
+      "severity": "warning",
+      "confidence": 0.95,
+      "category": "NULLABILITY_MISMATCH",
+      "endpoint": "GET /api/users/me",
+      "frontend": {
+        "file": "frontend/src/api/users.ts",
+        "line": 5,
+        "column": 14
+      },
+      "backend": {
+        "file": "backend/app.py",
+        "line": 15,
+        "column": 2
+      },
+      "expected": "avatar non-null",
+      "actual": "avatar nullable",
+      "explanation": "Backend may return null where frontend requires a value.",
+      "remediation": "Handle null or change the backend model.",
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 5,
+            "column": 14
+          }
+        },
+        {
+          "description": "FastAPI route decorator parsed from Python AST",
+          "location": {
+            "file": "backend/app.py",
+            "line": 15,
+            "column": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "CW302-8ca08a4e48",
+      "code": "CW302",
+      "severity": "warning",
+      "confidence": 0.9,
+      "category": "REQUIRED_FIELD_MISMATCH",
+      "endpoint": "GET /api/users/me",
+      "frontend": {
+        "file": "frontend/src/api/users.ts",
+        "line": 5,
+        "column": 14
+      },
+      "backend": {
+        "file": "backend/app.py",
+        "line": 15,
+        "column": 2
+      },
+      "expected": "avatar required",
+      "actual": "avatar optional",
+      "explanation": "Backend may omit a frontend-required field.",
+      "remediation": "Make the field required or optional on the client.",
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 5,
+            "column": 14
+          }
+        },
+        {
+          "description": "FastAPI route decorator parsed from Python AST",
+          "location": {
+            "file": "backend/app.py",
+            "line": 15,
+            "column": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "CW401-9015960097",
+      "code": "CW401",
+      "severity": "error",
+      "confidence": 0.9,
+      "category": "REQUEST_FIELD_MISSING",
+      "endpoint": "POST /api/users",
+      "frontend": {
+        "file": "frontend/src/api/users.ts",
+        "line": 11,
+        "column": 1
+      },
+      "backend": {
+        "file": "backend/app.py",
+        "line": 23,
+        "column": 2
+      },
+      "expected": "email: string",
+      "actual": "Field absent",
+      "explanation": "Backend requires a request field absent from the known frontend payload.",
+      "remediation": "Add the field to the payload.",
+      "evidence": [
+        {
+          "description": "Static API URL",
+          "location": {
+            "file": "frontend/src/api/users.ts",
+            "line": 11,
+            "column": 1
+          }
+        },
+        {
+          "description": "FastAPI route decorator parsed from Python AST",
+          "location": {
+            "file": "backend/app.py",
+            "line": 23,
+            "column": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "CW501-cbce566ea6",
+      "code": "CW501",
+      "severity": "info",
+      "confidence": 0.65,
+      "category": "UNMATCHED_BACKEND_ENDPOINT",
+      "endpoint": "GET /api/users/list",
+      "backend": {
+        "file": "backend/app.py",
+        "line": 19,
+        "column": 2
+      },
+      "expected": "Known frontend consumer",
+      "actual": "No discovered consumer",
+      "explanation": "This route may serve mobile apps, external services, or dynamic requests.",
+      "remediation": "Review usage before removing it.",
+      "evidence": [
+        {
+          "description": "FastAPI route decorator parsed from Python AST",
+          "location": {
+            "file": "backend/app.py",
+            "line": 19,
+            "column": 2
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "frontendCalls": 4,
+    "backendEndpoints": 3,
+    "matched": 2,
+    "compatible": 0,
+    "errors": 3,
+    "warnings": 4,
+    "info": 1,
+    "health": 12,
+    "durationMs": 42
+  }
+}

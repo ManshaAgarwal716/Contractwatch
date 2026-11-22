@@ -1,0 +1,77 @@
+ContractWatch v0.1.0
+
+Project: examples/demo-project
+Frameworks: FastAPI
+API calls: 4  Backend routes: 3  Matched: 2
+Health: 12/100  Errors: 3  Warnings: 4  Info: 1
+
+ERROR CW101 FRONTEND_ENDPOINT_NOT_FOUND
+  GET /api/users/missing
+  Frontend: frontend/src/api/users.ts:7
+  The frontend path and method have no discovered backend route.
+  Expected: Matching backend endpoint
+  Actual: No matching route discovered
+  Confidence: 85%
+  Fix: Check route spelling, mounting, or analyzer coverage.
+
+WARNING CW102 HTTP_METHOD_MISMATCH
+  POST /api/users/list
+  Frontend: frontend/src/api/users.ts:9
+  Backend: backend/app.py:19
+  Route exists with a different HTTP method.
+  Expected: POST
+  Actual: GET
+  Confidence: 90%
+  Fix: Align the client method with the backend route.
+
+WARNING CW201 RESPONSE_FIELD_MISSING
+  GET /api/users/me
+  Frontend: frontend/src/api/users.ts:5
+  Backend: backend/app.py:15
+  Frontend requires email, but the response model omits it.
+  Expected: email: string
+  Actual: Field absent
+  Confidence: 90%
+  Fix: Add the field or update the frontend type.
+
+ERROR CW202 RESPONSE_TYPE_MISMATCH
+  GET /api/users/me
+  Frontend: frontend/src/api/users.ts:5
+  Backend: backend/app.py:15
+  Response field types differ.
+  Expected: id: string
+  Actual: id: number
+  Confidence: 95%
+  Fix: Align the frontend type and backend response.
+
+WARNING CW301 NULLABILITY_MISMATCH
+  GET /api/users/me
+  Frontend: frontend/src/api/users.ts:5
+  Backend: backend/app.py:15
+  Backend may return null where frontend requires a value.
+  Expected: avatar non-null
+  Actual: avatar nullable
+  Confidence: 95%
+  Fix: Handle null or change the backend model.
+
+WARNING CW302 REQUIRED_FIELD_MISMATCH
+  GET /api/users/me
+  Frontend: frontend/src/api/users.ts:5
+  Backend: backend/app.py:15
+  Backend may omit a frontend-required field.
+  Expected: avatar required
+  Actual: avatar optional
+  Confidence: 90%
+  Fix: Make the field required or optional on the client.
+
+ERROR CW401 REQUEST_FIELD_MISSING
+  POST /api/users
+  Frontend: frontend/src/api/users.ts:11
+  Backend: backend/app.py:23
+  Backend requires a request field absent from the known frontend payload.
+  Expected: email: string
+  Actual: Field absent
+  Confidence: 90%
+  Fix: Add the field to the payload.
+
+Completed in 42 ms

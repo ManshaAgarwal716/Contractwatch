@@ -117,8 +117,36 @@ Python 3 is needed for FastAPI scanning. Static cross-file FastAPI router import
 
 ## Architecture and contributing
 
-`src/analyzers` extracts contracts; `src/core` handles discovery, normalization, matching, and findings; `src/reporters` renders reports; `src/git` compares revisions. The public API is in `src/index.ts`. See [CONTRIBUTING.md](CONTRIBUTING.md). The repository also contains audit, security, and real-world validation notes under `docs/`. Future work includes broader wrapper tracing, dynamic import handling, richer response inference, and a Node-only Python parser that removes the interpreter requirement.
+`src/analyzers` extracts contracts; `src/core` handles discovery, normalization, matching, and findings; `src/reporters` renders reports; `src/git` compares revisions. The public API is in `src/index.ts`. See [CONTRIBUTING.md](CONTRIBUTING.md). The repository also contains [release audit](docs/RELEASE_AUDIT.md), security, and real-world validation notes under `docs/`. Future work includes broader wrapper tracing, dynamic import handling, richer response inference, and a Node-only Python parser that removes the interpreter requirement.
 
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## Why ContractWatch exists
+
+Frontend types and backend route definitions can drift while each side still compiles. ContractWatch gives maintainers an early, source-linked signal before running integration tests. It complements those tests; it cannot guarantee runtime compatibility.
+
+## Quick start with the reproducible demo
+
+```bash
+npm ci
+npm run build
+node dist/cli.js scan examples/demo-project --verbose
+node dist/cli.js scan examples/demo-project --format json --output reports/report.json
+node dist/cli.js scan examples/demo-project --format html --output reports/report.html
+```
+
+Open `examples/demo-project/reports/report.html` locally. The demo exercises a matched route with incompatible response fields, a missing route, a method mismatch, and a missing required request field. See [demo instructions and verified findings](docs/DEMO.md), [terminal output](docs/demo/terminal.txt), [JSON report](docs/demo/report.json), and [HTML report](docs/demo/report.html). The checked-in report copies redact the absolute scan path. Screenshots are not included because a reliable screen capture was unavailable; these reports are generated from the working scanner.
+
+## Architecture and roadmap
+
+[Architecture](docs/ARCHITECTURE.md) traces discovery, analyzers, matching, and reporting. The main tradeoff is bounded static evidence: dynamic URLs, arbitrary wrappers and imports, and runtime response transformations need manual review. Planned improvements include broader wrapper tracing, richer response inference, and reducing the Python interpreter requirement.
+
+## GitHub Actions integration
+
+The repository's [CI workflow](.github/workflows/ci.yml) runs installation, typecheck, tests, lint, build, and package validation on Node 22 and 24. In an application repository, add `node dist/cli.js scan --strict --format json --output contractwatch.json` after building ContractWatch, or use the package binary after publication. Strict mode exits 2 when findings meet the configured threshold.
+
+## Security
+
+Scanning does not execute target source or upload it. The Python AST helper runs locally in isolated mode, and HTML escapes source-derived text. Reports contain paths and contract details; review them before sharing. See the [security review](docs/SECURITY_REVIEW.md).
